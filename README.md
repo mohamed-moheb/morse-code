@@ -2,7 +2,7 @@
 
 A user friendly python program,the user simply enters the message in the application and choose to encrypt or decrypt.
 
-##table of contents:
+**table of contents**:
 -[Installation](#intallation)
 -[how to use](#how-to)
 -[examples](#examples)
