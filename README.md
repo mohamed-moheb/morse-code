@@ -9,16 +9,16 @@ A user friendly python program,the user simply enters the message in the applica
 -[Key components](#key-components)
 -[Contributing](#contributing)
 
-#installation 
+**installation** 
 
 -simply clone this repository and run the following command: python setup.py install
 
-##how to use
+**how to use**
 
 -To encrypt a message, run the following command: python morse_code.py encript <message>
 -To decrypt a Morse code message, run the following command: python morse_code.py decript <morse_code_message>
 
-##examples
+**examples**
 
 -To encrypt the message "hello world", run the following command:
 python morse_code.py encript hello world
@@ -27,7 +27,7 @@ This will print the following output:.... . .-.. .-.. --- / .-- --- .-. .-.. -..
 python morse_code.py decript .... . .-.. .-.. --- / .-- --- .-. .-.. -..
 This will print the following output:hello world
 
-##key components
+**key components**
 
 The following are some of the key components of the Morse code application:
 -encryption() = This function encrypts a message using Morse code.
@@ -35,7 +35,7 @@ The following are some of the key components of the Morse code application:
 -key_alphabet= {} = variable containing dictionary taking alphabet as key, morse code as value
 -key_morsecode = {} = variable containing dictionary taking morse code as key, alphabet as value
 
-##contributing
+**contributing**
 
 If you would like to contribute to the Morse code application, please fork this repository and create a pull request.
 
