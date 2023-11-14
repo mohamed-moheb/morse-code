@@ -48,13 +48,13 @@ def decription(code):
     decrypt = ""
     current_morse = ""
     for character in code:
-        if character != " ":
+        if character != " ": #checks if the current character is not a space
             current_morse += character
         else:
             if current_morse:
                  decrypt += key_morsecode[current_morse]
             current_morse = ""
-    if current_morse:
+    if current_morse: #checks if the current_morse string still contains any characters
         decrypt += key_morsecode[current_morse]
     return decrypt
 
@@ -75,7 +75,7 @@ def test():
     final_result=""
     if method=="encrypt":
          for letter in input_user:
-            if not letter.isalpha():
+            if not letter.isalpha(): #Checks each character in the input to ensure it's an alphabetic character
                print("Invalid input: Numbers are not allowed")
                return ""
          final_result=encription(input_user)
@@ -83,7 +83,7 @@ def test():
     elif method=="decrypt":
             final_result=decription(input_user)
             print("the decrypted version is:",final_result)
-    else:
+    else: #handles an invalid method choice (other than "encrypt" or "decrypt")
          print("u have entered a wrong method,try again with encrypt or decrypt")
 
     return final_result
