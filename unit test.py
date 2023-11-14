@@ -94,6 +94,24 @@ class TestEnglishPhrases(unittest.TestCase):
         expected_output= "Give me the water"
 
         actual_output= decription(input_code)
+    def test_encryption__numbers(self):
+        # Test case 1
+        input_phrase= "12345"
+        expected_output = ""
+        
+        actual_output = encription(input_phrase)
+
+        # Test case 2 
+        input_phrase="1 2 3 4 5"
+        expected_output=""
+
+        actual_output= encription(input_phrase)
+
+        # Test case 3
+        input_phrase="2 dogs and 1 cat"
+        expected_output=""
+
+        actual_output= encription(input_phrase)
 
 
         
