@@ -74,6 +74,10 @@ def test():
     input_user=input("please enter your input :")
     final_result=""
     if method=="encrypt":
+         for letter in input_user:
+            if not letter.isalpha():
+               print("Invalid input: Numbers are not allowed")
+               return ""
          final_result=encription(input_user)
          print("the encrypted version is:",final_result)
     elif method=="decrypt":
