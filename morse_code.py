@@ -29,9 +29,9 @@ def encription(phrase):
     Return:string output containing encrypted version of the phrase.
 
     """
-    encrypt = ""
+    encrypted_phrase = ""
     for letter in phrase:
-        encrypt+= key_alphabet[letter] + " "
+        encrypted_phrase+= key_alphabet[letter] + " "
     return encrypt
 
 #function decrypt a morse code to English
@@ -75,9 +75,10 @@ def test():
     final_result=""
     if method=="encrypt":
          for letter in input_user:
-            if not letter.isalpha(): #Checks each character in the input to ensure it's an alphabetic character
-               print("Invalid input: Numbers are not allowed")
-               return ""
+              if letter != " ":
+                 if not letter.isalpha(): #Checks each character in the input to ensure it's an alphabetic character
+                     print("Invalid input: Numbers are not allowed")
+                     return ""
          final_result=encription(input_user)
          print("the encrypted version is:",final_result)
     elif method=="decrypt":
@@ -85,7 +86,6 @@ def test():
             print("the decrypted version is:",final_result)
     else: #handles an invalid method choice (other than "encrypt" or "decrypt")
          print("u have entered a wrong method,try again with encrypt or decrypt")
-
     return final_result
 c=test()
 print(c)
