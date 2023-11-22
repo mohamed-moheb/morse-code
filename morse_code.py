@@ -32,7 +32,7 @@ def encription(phrase):
     encrypted_phrase = ""
     for letter in phrase:
         encrypted_phrase+= key_alphabet[letter] + " "
-    return encrypt
+    return encrypted_phrase
 
 #function decrypt a morse code to English
 
@@ -77,7 +77,7 @@ def test():
          for letter in input_user:
               if letter != " ":
                  if not letter.isalpha(): #Checks each character in the input to ensure it's an alphabetic character
-                     print("Invalid input: Numbers are not allowed")
+                     print("Invalid input: Numbers and special charcters are not allowed")
                      return ""
          final_result=encription(input_user)
          print("the encrypted version is:",final_result)
