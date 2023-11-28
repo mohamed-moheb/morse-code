@@ -91,4 +91,77 @@ class EncryptionTests(unittest.TestCase):
         """
         invalid_inputs = [123, "@#$%", " "]
      # Test empty string
-    
+    def test_decryption_empty_string(self):
+        """
+        Test that decryption() returns an empty string when given an empty input string.
+        """
+        input_code = ""
+        expected_output = ""
+
+        actual_output = decryption(input_code)
+
+        self.assertEqual(actual_output, expected_output)
+
+    # Test simple code
+    def test_decryption_simple_code(self):
+        """
+        Test that decryption() correctly decodes a simple Morse code representation to its corresponding English phrase.
+        """
+        input_code = "... . .-.. .-.. ---"
+        expected_output = "hello"
+
+        actual_output = decryption(input_code)
+
+        self.assertEqual(actual_output, expected_output)
+
+    # Test complex code
+    def test_decryption_complex_code(self):
+        """
+        Test that decryption() correctly decodes a complex Morse code representation to its corresponding English phrase, including spaces.
+        """
+        input_code = "- .... .. ... / .--. .-. . -.- ... - / .-. .. ...- .-. .-.. ---"
+        expected_output = "this is a test"
+
+        actual_output = decryption(input_code)
+
+        self.assertEqual(actual_output, expected_output)
+
+    # Test mixed-case code
+    def test_decryption_mixed_case_code(self):
+        """
+        Test that decryption() correctly handles Morse code representations with mixed-case letters, preserving the original case in the decoded phrase.
+        """
+        input_code = "..- .--. .--. . .-. / .-.. --- .-- . .-."
+        expected_output = "UPPER lower"
+
+        actual_output = decryption(input_code)
+
+        self.assertEqual(actual_output, expected_output)
+
+    # Test invalid input (extra characters)
+    def test_decryption_invalid_input(self):
+        """
+        Test that decryption() handles invalid input containing extra characters, returning None and not attempting to decode them.
+        """
+        input_code = "... . .-.. .-.. --- abc..."
+        expected_output = None
+
+        actual_output = decryption(input_code)
+
+        self.assertEqual(actual_output, expected_output)
+
+    # Test error handling (invalid input)
+    def test_decryption_error_handling(self):
+        """
+        Test that decryption() raises a ValueError when given invalid input that cannot be decoded from Morse code.
+        """
+        with self.assertRaises(ValueError):
+            decryption('invalid_morse_code')
+
+    # Test error handling (invalid characters)
+    def test_decryption_error_handling_invalid_characters(self):
+        """
+        Test that decryption() raises a ValueError when given input containing invalid characters that are not part of the Morse code alphabet.
+        """
+        with self.assertRaises(ValueError):
+            decryption('...--...---....')
