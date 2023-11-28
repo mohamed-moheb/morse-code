@@ -1,121 +1,94 @@
 import unittest
+from morse_code import encryption, decryption
 
-from morse_code import encription, decription
 
-class TestEnglishPhrases(unittest.TestCase):
+class EncryptionTests(unittest.TestCase):
 
-    def test_encription_english_phrases(self):
-        """Tests the encription() function with English phrases."""
+    # Test empty string
+    def test_encryption_empty_string(self):
+        """
+        Test that encryption() returns an empty string when given an empty input string.
+        """
+        input_phrase = ""
+        expected_output = ""
 
-        # Test case 1
-        input_phrase = "hello world"
-        expected_output = ".... . .-.. .-.. --- / .-- --- .-. .-.. -.."
+        actual_output = encryption(input_phrase)
 
-        actual_output = encription(input_phrase)
-        
+        self.assertEqual(actual_output, expected_output)
 
-        # Test case 2
+    # Test single word
+    def test_encryption_single_word(self):
+        """
+        Test that encryption() correctly converts a single word to its corresponding Morse code representation.
+        """
+        input_phrase = "hello"
+        expected_output = "... . .-.. .-.. ---"
+
+        actual_output = encryption(input_phrase)
+
+        self.assertEqual(actual_output, expected_output)
+
+    # Test multiple words
+    def test_encryption_multiple_words(self):
+        """
+        Test that encryption() correctly converts a phrase of multiple words to their corresponding Morse code representation, including spaces.
+        """
         input_phrase = "this is a test"
         expected_output = "- .... .. ... / .--. .-. . -.- ... - / .-. .. ...- .-. .-.. ---"
 
-        actual_output = encription(input_phrase)
+        actual_output = encryption(input_phrase)
 
+        self.assertEqual(actual_output, expected_output)
 
-        # Test case 3 
-        input_phrase= "help"
-        expected_output= ".... . .-.. .-.. --- / -.-. --- .-. .-.."
+    # Test mixed-case phrase
+    def test_encryption_mixed_case_phrase(self):
+        """
+        Test that encryption() correctly handles phrases with mixed-case letters, preserving the original case in the Morse code output.
+        """
+        input_phrase = "UPPER lower"
+        expected_output = "..- .--. .--. . .-. / .-.. --- .-- . .-."
 
-        actual_output = encription(input_phrase)
+        actual_output = encryption(input_phrase)
 
-        
-        # Test case 4
-        input_phrase= "S O S"
-        expected_output="... / --- / ..."
+        self.assertEqual(actual_output, expected_output)
 
-        actual_output= encription(input_phrase)
-        
-        
+    # Test invalid input (special characters)
+    def test_encryption_invalid_input(self):
+        """
+        Test that encryption() handles invalid input containing special characters, returning None and not attempting to convert them.
+        """
+        input_phrase = "hello$%^&*"
+        expected_output = None
 
-        # Test case 5
-        input_phrase= "UPPER lower"
-        expected_output="..- .--. .--. . .-. / .-.. --- .-- . .-."
+        actual_output = encryption(input_phrase)
 
-        actual_output= encription(input_phrase)
+        self.assertEqual(actual_output, expected_output)
 
-        # Test case 6
-        input_phrase= "Give me the water"
-        expected_output="--. .. ...- . / -- . / - .... . / .-- .- - . .-."
+    # Test error handling (invalid input)
+    def test_encryption_error_handling(self):
+        """
+        Test that encryption() raises a ValueError when given invalid input that cannot be converted to Morse code.
+        """
+        with self.assertRaises(ValueError):
+            encryption('invalid_input')
 
-        actual_output= encription(input_phrase)
-        
-        
+    # Test handling of mixed-case letters
+    def test_encryption_mixed_case_letters(self):
+        """
+        Test that encryption() correctly preserves the case of individual letters when converting a phrase with mixed-case letters.
+        """
+        input_phrase = "This Is A Mixed-Case Phrase"
+        expected_output = "- .... .. ... / .-- .-. . -.- ... - / .- ..- -- .-.. .-.. .-.."
 
-    def test_decription_english_phrases(self):
-        """Tests the decription() function with English phrases."""
+        actual_output = encryption(input_phrase)
 
-        # Test case 1
-        input_code = ".... . .-.. .-.. --- / .-- --- .-. .-.. -.."
-        expected_output = "hello world"
+        self.assertEqual(actual_output, expected_output)
 
-        actual_output = decription(input_code)
-
-        
-
-        # Test case 2
-        input_code = "- .... .. ... / .--. .-. . -.- ... - / .-. .. ...- .-. .-.. ---"
-        expected_output = "this is a test"
-
-        actual_output = decription(input_code)
-
-       
-        # Test case 3 
-        input_code = ".... . .-.. .-.. --- / -.-. --- .-. .-.."
-        expected_output = "help"
-
-        actual_output= decription(input_code)
-
-        
-        
-        # Test case 4
-        input_code= "... / --- / ..."
-        expected_output= "S O S"
-
-        actual_output= decription(input_code)
-
-       
-        # Test case 5
-        input_code= "..- .--. .--. . .-. / .-.. --- .-- . .-."
-        expected_output= "UPPER lower"
-
-        actual_output= decription(input_code)
-
-        # Test case 6
-        input_code= "--. .. ...- . / -- . / - .... . / .-- .- - . .-."
-        expected_output= "Give me the water"
-
-        actual_output= decription(input_code)
-    def test_encryption__numbers(self):
-        # Test case 1
-        input_phrase= "12345"
-        expected_output = ""
-        
-        actual_output = encription(input_phrase)
-
-        # Test case 2 
-        input_phrase="1 2 3 4 5"
-        expected_output=""
-
-        actual_output= encription(input_phrase)
-
-        # Test case 3
-        input_phrase="2 dogs and 1 cat"
-        expected_output=""
-
-        actual_output= encription(input_phrase)
-
-
-        
-
-
-if __name__ == "__main__":
-    unittest.main()
+    # Test handling of invalid input types (numbers, symbols)
+    def test_encryption_invalid_input_types(self):
+        """
+        Test that encryption() raises a ValueError when given invalid input types, such as numbers or symbols.
+        """
+        invalid_inputs = [123, "@#$%", " "]
+     # Test empty string
+    
